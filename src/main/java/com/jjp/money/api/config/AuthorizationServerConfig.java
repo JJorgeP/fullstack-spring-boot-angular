@@ -6,7 +6,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
@@ -24,8 +23,8 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 	@Autowired
 	private AuthenticationManager authenticationManager;
 	
-	@Autowired
-	private PasswordEncoder passwordEncoder;
+//	@Autowired
+//	private PasswordEncoder passwordEncoder;
 	
 	@Autowired
 	private UserDetailsService userDetailsService;
@@ -34,7 +33,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
 		clients.inMemory()
 			.withClient("angular")
-			.secret("$2a$10$6/klUls6Rl5.fNo9BfurOuOy5RhcGRsPztVlPuT96n04/vd.1iL4O") //@ngul@r0
+			.secret("@ngul@r0") // $2a$10$6/klUls6Rl5.fNo9BfurOuOy5RhcGRsPztVlPuT96n04/vd.1iL4O
 			.scopes("read", "write")
 			.authorizedGrantTypes("password", "refresh_token")
 			.accessTokenValiditySeconds(1800) //1800/60=30
